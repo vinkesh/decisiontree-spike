@@ -1,0 +1,39 @@
+{
+    "question one" : {
+        "text": "What is your age group?",
+        "answers": [
+            "0-15",
+            "15-21",
+            "21-60",
+            "60+"
+        ]
+    },
+    "question two" : {
+        "text": "Do you smoke?",
+        "answers": [
+            "Yes", "No"
+        ]
+    },
+    "question Three" : {
+        "text": "For how long have you been smoking",
+        "answers": [
+            "0-5 years",
+            "5-10 years",
+            "More than 10 years"
+        ]
+    },
+    "question Four" : {
+        "text": "Do you drink?",
+        "answers": [
+            "Yes", "No"
+        ]
+    },
+    "question Five" : {
+        "text": "For how long have you been drinking?",
+        "answers": [
+            "0-5 years",
+            "5-10 years",
+            "More than 10 years"
+        ]
+    }
+}

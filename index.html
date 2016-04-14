@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    </head>
+
+    <body>
+
+        <div id="questionText"></div>
+        <div id="answers">
+            <ul></ul>
+        </div>
+
+        <button id="next">Next</button>
+
+        <script type="text/javascript" src="decisionFlowchart.js"></script>
+        <script type="text/javascript" src="sampleFlowchart.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                questionBank = {
+                    "question one" : {
+                        "text": "What is your age group?",
+                        "answers": [
+                            "0-15",
+                            "15-21",
+                            "21-60",
+                            "60+"
+                        ]
+                    },
+                    "question two" : {
+                        "text": "Do you smoke?",
+                        "answers": [
+                            "Yes", "No"
+                        ]
+                    },
+                    "question Three" : {
+                        "text": "For how long have you been smoking",
+                        "answers": [
+                            "0-5 years",
+                            "5-10 years",
+                            "More than 10 years"
+                        ]
+                    },
+                    "question Four" : {
+                        "text": "Do you drink?",
+                        "answers": [
+                            "Yes", "No"
+                        ]
+                    },
+                    "question Five" : {
+                        "text": "For how long have you been drinking?",
+                        "answers": [
+                            "0-5 years",
+                            "5-10 years",
+                            "More than 10 years"
+                        ]
+                    },
+                    "question Six" : {
+                        "text": "Do you have asthama?",
+                        "answers": [
+                            "Yes",
+                            "No"
+                        ]
+                    }
+                }
+
+                answerOf = {"question two": "Yes", "question Four": "Yes"};
+
+                var flow = SampleFlowchart({});
+
+                var index = 0
+                $("#next").click(function() {
+                    if(index < flow.length) {
+                        var retvalue = flow[index]();
+                        index++;
+                        if(retvalue && retvalue.length > 0) {
+                            var x = [].concat.apply([], [index, 0, retvalue]);
+                            flow.splice.apply(flow, x);
+                            $("#next").click();
+                        }
+                    } else {
+                        $("#next").attr('disabled', true);
+                    }
+                });
+                $("#next").click();
+            })
+        </script>
+    </body>
+</html>
