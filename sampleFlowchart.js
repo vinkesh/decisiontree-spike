@@ -1,4 +1,4 @@
-var SampleFlowchart = function(person) {
+var SampleFlowchart = function(person, answerOf) {
     return [
         "question one",
         "question two",

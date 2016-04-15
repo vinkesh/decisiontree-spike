@@ -63,9 +63,9 @@
                     }
                 }
 
-                answerOf = {"question two": "Yes", "question Four": "Yes"};
+                answersGiven = {"question two": "No", "question Four": "Yes"};
 
-                var flow = SampleFlowchart({});
+                var flow = SampleFlowchart({}, answersGiven);
 
                 var ask = function(question) {
                     $("#questionText").text(questionBank[question].text);
