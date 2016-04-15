@@ -1,25 +1,25 @@
 var SampleFlowchart = function(person) {
     return [
-        ask("question one"),
-        ask("question two"),
-        cond(function() {
+        "question one",
+        "question two",
+        function() {
             if(answerOf["question two"] == "Yes") {
                 return [
-                    ask("question Three"),
-                    ask("question Six"),
-                    cond(function() {
+                    "question Three",
+                    "question Six",
+                    function() {
                         if(answerOf["question Six"] == "Yes") {
-                            return [ask("question two")]
+                            return ["question two"]
                         }
-                    })
+                    }
                 ]
             }
-        }),
-        ask("question Four"),
-        cond(function() {
+        },
+        "question Four",
+        function() {
             if(answerOf["question Four"] == "Yes") {
-                return [ask("question Five")]
+                return ["question Five"]
             }
-        }),
+        },
     ]
 }

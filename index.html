@@ -12,7 +12,6 @@
 
         <button id="next">Next</button>
 
-        <script type="text/javascript" src="decisionFlowchart.js"></script>
         <script type="text/javascript" src="sampleFlowchart.js"></script>
 
         <script>
@@ -68,14 +67,31 @@
 
                 var flow = SampleFlowchart({});
 
+                var ask = function(question) {
+                    $("#questionText").text(questionBank[question].text);
+                    var list = $("#answers > ul");
+                    if(list) {
+                        list.remove();
+                    }
+                    var list = $("<ul/>").appendTo("#answers")
+                    questionBank[question].answers.forEach(function(answer) {
+                        var ans = $('<li/>').text(answer).appendTo(list);
+                    });
+                }
+
                 var index = 0
                 $("#next").click(function() {
                     if(index < flow.length) {
-                        var retvalue = flow[index]();
+                        var retvalue = flow[index];
                         index++;
-                        if(retvalue && retvalue.length > 0) {
-                            var x = [].concat.apply([], [index, 0, retvalue]);
-                            flow.splice.apply(flow, x);
+                        if(typeof retvalue == "string") {
+                            ask(retvalue);
+                        } else if(typeof retvalue == "function") {
+                            var subflow = retvalue();
+                            if(subflow) {
+                                var x = [].concat.apply([], [index, 0, subflow]);
+                                flow.splice.apply(flow, x);
+                            }
                             $("#next").click();
                         }
                     } else {
